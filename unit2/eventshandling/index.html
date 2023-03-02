@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Point Click Adventure</title>
+
+  <style>
+    html, body{
+      margin: 0;
+      height: 100px;
+    }
+  </style>
+
+  <!-- js -->
+  <script>
+
+    let divCoordObj;
+
+    window.onload = function(){
+      divCoordObj = document.getElementById('coord');
+    }
+
+    //show coordinates of mouse pointer
+    document.addEventListener("mousemove", function (event) {
+        divCoordObj.innerHTML = "(" + event.pageX + ", " + event.pageY + ")";
+        divCoordObj.style.left = event.pageX + 10 + "px";
+        divCoordObj.style.top = event.pageY - 10 + "px";
+    });
+
+    //hide coordinates
+    document.addEventListener("mouseout", function () {
+        divCoordObj.innerHTML = "";
+    });
+    //handle click event
+    document.addEventListener("click", function (event) {
+        alert("You clicked at" + "(" + event.pageX + ", " + event.pageY + ")");
+    });
+
+    /*
+
+    //show coordinates of mouse pointer
+    document.onmousemove = function (event) {
+      divCoordObj.innerHTML = "(" + event.pageX + ", " + event.pageY + ")";
+      divCoordObj.style.left = event.pageX + 10 + "px";
+      divCoordObj.style.top = event.pageY - 10 + "px";
+    };
+
+    //hide coordinates
+    document.onmouseout = function () {
+      divCoordObj.innerHTML = "";
+    };
+
+    //show coords of mouse
+
+    document.addEventListener("mousemove", function(event){
+      divCoordObj.innerHTML = "";
+    })
+
+    //handle click event
+    document.addEventListener("click", function(event){
+      alert("You clicked at" + "(" + event.pageX + ", " + event.pageY + ")");
+    })
+
+    //show coords of mouse
+    function showCoord(event){
+      document.getElementById('coord').innerHTML =
+              "(" + event.pageX + ", " + event.pageY + ")";
+      document.getElementById('coord').style.left = event.pageX + 10 + "px";
+      document.getElementById('coord').style.top = event.pageY - 10 + "px";
+    }
+
+
+    //hide coords of mouse
+    function hideCoord(e){
+      document.getElementById('coord').innerHTML = "";
+    }
+    */
+
+
+    //document.onmouseover = showCoord();
+    //document.onmouseout = hideCoord();
+  </script>
+</head>
+<body>
+
+<div id="coord" style="position: absolute">Coord</div>
+
+
+</body>
+</html>

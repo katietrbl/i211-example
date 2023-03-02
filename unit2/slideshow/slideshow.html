@@ -1,0 +1,108 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript Slideshow</title>
+<style type="text/css">
+	body {
+		background-color: #DCE0E4;
+		text-align: center;
+	}
+	
+	a {text-decoration: none}
+
+	table {
+		border: solid 3px #690;
+		text-align:center;
+	}
+	
+	td#navigation {
+		border-bottom: solid 1px #690
+	}
+</style>
+</head>
+
+<script>
+	//returns todays date
+	function currentDate(){
+
+		//i changed these to let because with var it didnt run
+		let today = new Date();
+		let strToday = (today.getMonth()+1) + "/" + today.getDate() + "/" + today.getFullYear();
+		return strToday;
+	}
+
+	//display img
+
+	let imgCount = 1;
+	function displayImage(ImgCount){
+		//display img
+		document.getElementById("image").src = "image" + imgCount + ".jpg";
+		//display img number
+		document.getElementById('message').innerHTML = "Image" + imgCount;
+	}
+
+
+	//display next img
+	function next(){
+		imgCount++;
+		if(imgCount == 6) imgCount = 1;
+		displayImage(imgCount);
+	}
+
+	//display previous img
+	function prev(){
+		imgCount--;
+		if(imgCount == 0) imgCount = 5;
+		displayImage(imgCount);
+	}
+
+	//display last img
+	function last(){
+		imgCount = 5;
+		displayImage(imgCount);
+	}
+
+	//display first img
+	function first(){
+		imgCount = 1;
+		displayImage(imgCount);
+	}
+
+</script>
+
+<body>
+<h1>JavaScript Slideshow</h1>
+
+<p>
+	<script>
+		document.write("Today is: " + currentDate());
+	</script>
+</p>
+
+<table cellpadding="3" cellspacing="0" align="center">
+<tr>
+	<td>
+		<!-- the container for displaying images -->
+        <div style="width: 260px">
+			<img id="image" src="image1.jpg" />
+		</div>
+	</td>
+</tr>
+<tr>
+	<td id="navigation"> 
+    	<!-- navigation links -->
+		<a href="javascript:first()"> << </a> &nbsp;&nbsp;
+		<a href="javascript:prev()"> < </a> &nbsp;&nbsp;
+		<a href="javascript:next()"> > </a> &nbsp;&nbsp;
+		<a href="javascript:last()"> >> </a>
+	</td>
+</tr>
+<tr>
+	<td>
+    	<div id="message">Image 1</div>
+    </td>
+</tr>
+</table>
+</body>
+</html>
